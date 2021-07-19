@@ -7,7 +7,7 @@ class AddContact extends React.Component {
   };
   add = (e) => {
     e.preventDefault();
-    if (this.state.name == "" || this.state.mobile == "") {
+    if (this.state.name === "" || this.state.mobile === "") {
       alert("Please fill all fields!");
       return;
     }
