@@ -5,7 +5,7 @@ const ContactDetail = (props) => {
   return (
     <div className="ui main">
       <div className=" ui card centered">
-        <img src={user} alt="User Image" className="image"></img>
+        <img src={user} alt="User" className="image"></img>
         <div className="content">
           <div className="header">{name}</div>
           <p className="description">{mobile}</p>
