@@ -7,7 +7,9 @@ const ContactList = (props) => {
       <ContactCard
         key={index}
         contact={contact}
-        handleDeleteContact={props.handleDeleteContact}
+        handleDeleteContact={(id) => {
+          props.getContactId(id);
+        }}
       />
     );
   });

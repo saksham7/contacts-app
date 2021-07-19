@@ -4,7 +4,7 @@ import user from "../images/user-avatar.png";
 const ContactCard = (props) => {
   const { id, name, mobile } = props.contact;
   const deleteContact = () => {
-    this.props.handleDeleteContact(id);
+    props.handleDeleteContact(id);
   };
   return (
     <div className="item">
