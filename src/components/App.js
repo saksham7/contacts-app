@@ -4,6 +4,8 @@ import ContactList from "./ContactList";
 import AddContact from "./AddContact";
 import { useState, useEffect } from "react";
 import { uuid } from "uuidv4";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ContactDetail from "./ContactDetail";
 
 function App() {
   const [contacts, setContacts] = useState([]);
@@ -31,9 +33,33 @@ function App() {
 
   return (
     <div>
-      <Header />
-      <AddContact addContactHandler={addContactHandler} />
-      <ContactList contacts={contacts} getContactId={handleDeleteContact} />
+      <Router>
+        <Header />
+        <Switch>
+          {/* This is one approach not ideal as it re renders complete component we just need to update it */}
+          <Route
+            path="/"
+            exact
+            component={() => (
+              <ContactList
+                contacts={contacts}
+                getContactId={handleDeleteContact}
+              />
+            )}
+          />
+          {/* This is 2nd approach we should follow this using render prop */}
+          <Route
+            path="/add"
+            render={(props) => (
+              <AddContact {...props} addContactHandler={addContactHandler} />
+            )}
+          />
+          <Route path="/contact/:id" component={ContactDetail} />
+        </Switch>
+      </Router>
+
+      {/* <AddContact addContactHandler={addContactHandler} />
+      <ContactList contacts={contacts} getContactId={handleDeleteContact} /> */}
     </div>
   );
 }

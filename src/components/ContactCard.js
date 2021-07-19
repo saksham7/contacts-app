@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import user from "../images/user-avatar.png";
 
 const ContactCard = (props) => {
@@ -7,12 +8,16 @@ const ContactCard = (props) => {
     props.handleDeleteContact(id);
   };
   return (
-    <div className="item">
+    <div className="item" style={{ padding: "10px" }}>
       <img className="ui avatar image" src={user} />
-      <div className="content">
-        <div className="header">{name}</div>
-        <div>{mobile}</div>
-      </div>
+      <Link
+        to={{ pathname: `/contact/${id}`, state: { contact: props.contact } }}
+      >
+        <div className="content" style={{ display: "inline-block" }}>
+          <div className="header">{name}</div>
+          <div>{mobile}</div>
+        </div>
+      </Link>
       <i
         className="trash alternate outline icon"
         style={{
